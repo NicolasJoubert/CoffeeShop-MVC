@@ -8,6 +8,8 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
+require __DIR__ . "/../App/Controllers/MainController.php";
+
 $router = new AltoRouter();
 $router->setBasePath("/S05/CoffeShop/CoffeeShop-MVC/public");
 
@@ -20,16 +22,16 @@ $router->map('GET', '/products', ['method' => 'productspage', 'controller' => 'M
 // $match va soit contenir un tableau soit un booleen = false 
 $match = $router->match();
 
-var_dump($match);
-
-
 if ($router->match() !== false) {
     $matchRoute = $match['target'];
-    var_dump($matchRoute);
 
     $controller = $matchRoute['controller'];
-    $method = $matchRoute['homepage'];
+    $method = $matchRoute['method'];
 } else {
+
+    // erreur 404 
+    var_dump("Erreur 404 page non trouvée");
+    die();
 }
 
 //dispatcher 
