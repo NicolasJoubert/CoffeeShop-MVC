@@ -32,16 +32,16 @@ class Database
         // la fonction parse_ini_file analyse le fichier et retourne un array associatif
         // parse_ini_file() : https://www.php.net/manual/en/function.parse-ini-file.php
         // avec les informations de connexions inscrites dans le fichier
-        $configData = parse_ini_file(__DIR__ . '/../config.ini');
+        // $configData = parse_ini_file(__DIR__ . '/../config.ini');
 
         // try : un mot clé que vous verrez lors des prochaines saisons, 
         // promis on vous expliquera tout ;)
         try {
             // Tentative de connexion à la BDD
             $this->dbh = new PDO(
-                "mysql:host={$configData['DB_HOST']};dbname={$configData['DB_NAME']};charset=utf8",
-                $configData['DB_USERNAME'],
-                $configData['DB_PASSWORD'],
+                "mysql:host=localhost;dbname=freshcoffeshop;charset=utf8",
+                "coffee",
+                "coffee",
 
                 // Configuration pour afficher les erreurs SQL à l'écran
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)

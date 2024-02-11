@@ -10,6 +10,11 @@ require __DIR__ . "/../vendor/autoload.php";
 
 require __DIR__ . "/../App/Controllers/MainController.php";
 
+// requie fichier models et utils 
+
+require __DIR__ . "/../App/Utils/Database.php";
+require __DIR__ . "/../App/Models/Product.php";
+
 $router = new AltoRouter();
 $router->setBasePath("/S05/CoffeShop/CoffeeShop-MVC/public");
 

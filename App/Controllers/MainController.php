@@ -7,9 +7,18 @@ class MainController
         $this->show("content_home");
     }
 
+    /**
+     * affichage de la page produits 
+     * affichera également les produits vendant de la DB
+     *
+     */
     public function productspage()
     {
-        $this->show("content_products");
+        // instancie le modèle -> interragit avec la DB
+        $productModel = new Product();
+        $productFromModel = $productModel->findAll();
+
+        $this->show("content_products", ['products' => $productFromModel]);
     }
 
     private function show($viewPage, $viewData = [])
