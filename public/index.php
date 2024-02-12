@@ -46,3 +46,35 @@ if ($router->match() !== false) {
 
 $controller = new $controller();
 $controller->$method($match["params"]);
+
+
+//*nouvelle méthode 
+// $resultRoutes = [
+//     '/home' => [
+//         'controller' => 'MainController',
+//         'method' => 'addition'
+//     ],
+//     '/contact' => [
+//         'controller' => 'PageController',
+//         'method' => 'contactAction'
+//     ]
+    
+// ];
+
+// echo "<br>";
+
+// Notre dispatcher
+// $method = $resultRoute['method'];
+// $controller = new $resultRoute['controller']();       // $controller = new MainController()
+// echo $controller->$method(1, 2);                // $controller->addition();
+
+
+// PLUS SIMPLE ET PLUS MAINTENABLE QUE D'ECRIRE CECI
+
+// if($page === '/home') {
+//     $mainController = new MainController();
+//     $mainController->addition(1 ,2);
+// } else if ($page === '/contact') {
+//     $pageController = new PageController();
+//     $pageController->contactAction();
+// }
