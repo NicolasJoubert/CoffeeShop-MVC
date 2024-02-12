@@ -7,11 +7,12 @@
 // http://localhost/S05/CoffeShop/CoffeeShop-MVC/public/products => "/products' affichera les produits du site 
 
 require __DIR__ . "/../vendor/autoload.php";
-
+require __DIR__ . "/../App/Controllers/CoreController.php";
 require __DIR__ . "/../App/Controllers/MainController.php";
 
-// requie fichier models et utils 
 
+// requie fichier models et utils 
+require __DIR__ . "/../App/Models/CoreModel.php";
 require __DIR__ . "/../App/Utils/Database.php";
 require __DIR__ . "/../App/Models/Product.php";
 
@@ -23,6 +24,8 @@ $router->setBasePath("/S05/CoffeShop/CoffeeShop-MVC/public");
 $router->map('GET', '/', ['method' => 'homepage', 'controller' => 'MainController'], 'page_index');
 // afficher les produits du site 
 $router->map('GET', '/products', ['method' => 'productspage', 'controller' => 'MainController'], 'page_products');
+// afficher le détail d'un produit (par ex ici le produit numéro 1)
+$router->map('GET', '/product/[i:product_id]', ['method' => 'detailproduitnumero1', 'controller' => 'MainController'], 'detail_product');
 
 // $match va soit contenir un tableau soit un booleen = false 
 $match = $router->match();
@@ -42,4 +45,4 @@ if ($router->match() !== false) {
 //dispatcher 
 
 $controller = new $controller();
-$controller->$method();
+$controller->$method($match["params"]);

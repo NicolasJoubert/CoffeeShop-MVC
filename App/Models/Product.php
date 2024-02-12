@@ -1,6 +1,6 @@
 <?php
 
-class Product
+class Product extends CoreModel
 {
 
     // la répresentation sous forme d'objet de ma table dans la BDD 
@@ -12,6 +12,7 @@ class Product
     private $subtitle;
     private $picture;
     private $description;
+
 
 
     // les méthodes 
@@ -29,7 +30,7 @@ class Product
         return $products;
     }
 
-    public function find($id)
+    public function findById($id)
     {
         $sql = 'SELECT * FROM products WHERE id = ' . $id;
         $pdo = Database::getPDO();

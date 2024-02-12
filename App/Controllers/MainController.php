@@ -1,6 +1,6 @@
 <?php
 
-class MainController
+class MainController extends CoreController
 {
     public function homepage()
     {
@@ -10,7 +10,7 @@ class MainController
     /**
      * affichage de la page produits 
      * affichera également les produits vendant de la DB
-     *
+     *@return void
      */
     public function productspage()
     {
@@ -21,10 +21,27 @@ class MainController
         $this->show("content_products", ['products' => $productFromModel]);
     }
 
-    private function show($viewPage, $viewData = [])
+
+    /**
+     * affichage du détail du produit numéro 1 
+     * affichera également les produits vendant de la DB
+     *@return void
+     */
+
+    public function detailproduitnumero1($urlParams)
+
     {
-        require __DIR__ . "/../Views/parts/header.tpl.php";
-        require __DIR__ . "/../Views/$viewPage.tpl.php";
-        require __DIR__ . '/../Views/parts/footer.tpl.php';
+        // je récupere le parametre product id défini dans la page index.php 
+        $productId = $urlParams["product_id"];
+
+        // a partir de cet idee je veux récuperer le produit dans la BDD 
+        // en faisant depuis mon models SELECT * FROM product WHERE id = $productId
+        $productModel = new Product();
+        $productFromModel = $productModel->findById($productId);
+
+        $data = [
+            'product' => $productFromModel // contient un objet de la class product
+        ];
+        $this->show("detail_product", $data);
     }
 }

@@ -11,10 +11,13 @@
                         </h2>
                     </div>
                 </div>
-                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="<?= $product->getPicture() ?>" alt="all products">
+                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="<?= $urlAbsolute; ?>/<?= $product->getPicture() ?>" alt="all products">
                 <div class="product-item-description d-flex mr-auto">
                     <div class="bg-faded p-5 rounded">
-                        <p class="mb-0"><?= $product->getDescription() ?></p>
+                        <p class="mb-0"><?= $product->getDescription() ?>
+                            <br>
+                            <a href="<?= $urlAbsolute; ?>/product/<?= $product->getId() ?>">Liens vers détail produit</a>
+                        </p>
                     </div>
                 </div>
             </div>
